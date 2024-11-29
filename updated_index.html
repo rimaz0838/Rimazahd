@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rimaz Ahamed - Personal Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.14.1/dist/full.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.6.8/firebase-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.6.8/firebase-auth.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.6.8/firebase-firestore.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+        .particle-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(25, 25, 25, 0.1), rgba(0, 0, 0, 0.5));
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 3s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white relative">
+    <div class="particle-bg" id="particles"></div>
+    <nav class="sticky top-0 z-50 bg-gray-800 bg-opacity-75 p-4 flex justify-between items-center">
+        <div class="text-lg font-bold">Rimaz Ahamed</div>
+        <button id="theme-toggle" class="btn btn-primary">Toggle Dark Mode</button>
+    </nav>
+    <section class="flex flex-col justify-center items-center h-screen text-center">
+        <h1 class="text-5xl font-bold mb-4">Hello, I'm Rimaz Ahamed</h1>
+        <p class="mb-8">Welcome to my personal website! Discover my work and passions.</p>
+        <a href="#contact" class="btn btn-accent text-xl">Get in Touch</a>
+    </section>
+    <section id="contact" class="py-20 max-w-2xl mx-auto">
+        <h2 class="text-4xl text-center mb-6">Contact Me</h2>
+        <div class="flex flex-col space-y-4">
+            <a href="https://wa.me/+94742699577" class="btn btn-success text-lg">WhatsApp</a>
+            <a href="https://www.tiktok.com/rimaz_ff77" class="btn btn-warning text-lg">TikTok</a>
+            <a href="https://www.facebook.com/Rimazahamed086?mibextid=ZbWKwL" class="btn btn-info text-lg">Facebook</a>
+            <a href="https://t.me/Rimazzzzzzz" class="btn btn-secondary text-lg">Telegram</a>
+        </div>
+        
+    </section>
+    <footer class="py-4 bg-gray-800 text-center">
+        <p>&copy; 2024 Rimaz Ahamed. All rights reserved.</p>
+    </footer>
+    <script>
+        var particles = [];
+        function createParticle() {
+            var particle = document.createElement('div');
+            particle.className = 'particle';
+            var size = Math.random() * 10 + 5;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.backgroundColor = 'white';
+            document.getElementById('particles').appendChild(particle);
+            particles.push(particle);
+            setTimeout(function() { particle.remove(); }, 3000);
+        }
+        setInterval(createParticle, 300);
+
+        document.getElementById('theme-toggle').onclick = function() {
+            document.body.classList.toggle('bg-gray-900');
+            document.body.classList.toggle('bg-gray-100');
+            document.body.classList.toggle('text-white');
+            document.body.classList.toggle('text-gray-900');
+        };
+
+        document.getElementById('feedback-form').onsubmit = function(e) {
+            e.preventDefault();
+            alert('Feedback submitted!');
+            this.reset();
+        };
+    </script>
+</body>
+</html>
+
+ 
